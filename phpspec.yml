@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: Tvrtle
+        psr4_prefix: Tvrtle
+        src_path: app
