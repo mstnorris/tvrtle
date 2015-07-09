@@ -19,3 +19,25 @@ $factory->define(Tvrtle\User::class, function ($faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+//$factory->define(Tvrtle\Job::class, function ($faker) {
+//    return [
+//        'job_category_id' => $faker->randomElement(\Tvrtle\JobCategory::lists('id')->all()),
+//        'name' => $faker->name,
+//        'job_id' => $faker->unique()->numberBetween(1,999),
+//    ];
+//});
+//
+//$factory->define(Tvrtle\Invoice::class, function ($faker) {
+//    return [
+//        'invoice_id' => str_random(6)
+//    ];
+//});
+
+$factory->define(Tvrtle\Client::class, function ($faker) {
+    return [
+        'tvrtle_id' => $faker->unique()->randomDigit,
+        'client_name' => $faker->company,
+        'client_address' => $faker->address,
+    ];
+});

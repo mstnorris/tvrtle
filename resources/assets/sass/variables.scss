@@ -1,0 +1,19 @@
+$brand-primary: $flat-turquoise;
+$brand-success: $flat-emerald;
+$brand-info: $flat-peter-river;
+$brand-warning: $flat-sunflower;
+$brand-danger: $flat-alizarin;
+
+$navbar-default-bg: $flat-turquoise;
+
+$navbar-default-color: $flat-clouds;
+$navbar-default-border: none;
+
+$navbar-default-link-color: $flat-clouds;
+$navbar-default-link-hover-color: lighten($navbar-default-link-color, 10%);
+$navbar-default-link-active-color: lighten($navbar-default-link-color, 10%);
+
+$navbar-default-brand-hover-color: lighten($navbar-default-link-color, 10%);
+
+$navbar-default-link-active-bg: $flat-green-sea;
+$navbar-default-link-hover-bg: $flat-green-sea;

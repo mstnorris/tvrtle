@@ -143,7 +143,18 @@ return [
         Tvrtle\Providers\AppServiceProvider::class,
         Tvrtle\Providers\EventServiceProvider::class,
         Tvrtle\Providers\RouteServiceProvider::class,
+        Tvrtle\Providers\DatabaseServiceProvider::class,
 
+        /*
+         * First Party Service Providers
+         */
+        Illuminate\Html\HtmlServiceProvider::class,
+
+        /*
+         * Third Party Service Providers
+         */
+        Vinkla\Hashids\HashidsServiceProvider::class,
+        Appzcoder\CrudGenerator\CrudGeneratorServiceProvider::class,
     ],
 
     /*
@@ -191,6 +202,17 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
+
+        /*
+         * First Party Facades
+         */
+        'Form'      => Illuminate\Html\FormFacade::class,
+        'HTML'      => Illuminate\Html\HtmlFacade::class,
+
+        /*
+         * Third Party Facades
+         */
+        'Hashids' => Vinkla\Hashids\Facades\Hashids::class
 
     ],
 

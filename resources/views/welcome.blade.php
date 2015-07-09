@@ -3,7 +3,7 @@
     <head>
         <title>Tvrtle</title>
 
-        <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.3.0/animate.min.css">
         <style>
             html, body {
@@ -11,18 +11,17 @@
             }
 
             body {
-                background: #16a085;
+                background: #ffffff;
                 margin: 0;
                 padding: 0;
                 width: 100%;
-                color: #16a085;
+                color: #999999;
                 display: table;
                 font-weight: 100;
-                font-family: 'Indie Flower', cursive;
-                text-shadow: 0px 0px 1px #1abc9c, 0 0 2px #16a085, 0 0 5px #1abc9c;
+                font-family: 'Open Sans', cursive;
             }
 
-            .container {
+            .container-fluid {
                 text-align: center;
                 display: table-cell;
                 vertical-align: middle;
@@ -43,22 +42,23 @@
             }
 
             .title {
-                -webkit-animation-duration: 10s;
+                -webkit-animation-duration: 4s;
             }
 
         </style>
     </head>
     <body>
-        <div class="container">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-10">
+
+                </div>
+
+            </div>
             <div class="content">
-                <div class="title animated fadeIn">Tvrtle</div>
+                <div class="title animated fadeInDown">tvrtle</div>
             </div>
         </div>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-        <script>
-        $('.title').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-            $(this).addClass('pulse infinite').removeClass('fadeIn');
-        });
-        </script>
     </body>
 </html>

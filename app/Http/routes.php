@@ -1,16 +1,45 @@
 <?php
 
+get('/', function () {
+    return view('pages.about');
+});
+
+/*
+ * Public Static Page Routes
+ */
+get('about', 'PagesController@about');
+get('contact', 'PagesController@contact');
+
+get('login', ['as' => 'login_path', 'uses' => 'Auth\AuthController@getLogin']);
+post('login', ['as' => 'login_path', 'uses' => 'Auth\AuthController@postLogin']);
+get('logout', ['as' => 'logout_path', 'uses' => 'Auth\AuthController@getLogout']);
+
+
 /*
 |--------------------------------------------------------------------------
-| Application Routes
+| Internal Employee Application Routes (Requires Authentication)
 |--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => 'auth'], function () {
+    resource('jobs', 'JobsController');
+    resource('invoices', 'InvoicesController');
+    resource('clients', 'ClientsController');
+    resource('categories', 'JobCategoriesController');
+});
+
+
+/*
+|--------------------------------------------------------------------------
+| API Routes (Requires Authentication)
+|--------------------------------------------------------------------------
+*/
+
+// , 'middleware' => ['auth', 'active', 'verified', 'notBlocked']
+
+Route::group(['prefix' => 'api/v1/', 'namespace' => 'API', 'middleware' => 'auth'], function () {
+    resource('jobs', 'JobsController');
+    resource('invoices', 'InvoicesController');
+    resource('clients', 'ClientsController');
+    resource('categories', 'JobCategoriesController');
 });
