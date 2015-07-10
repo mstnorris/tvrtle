@@ -36,10 +36,9 @@ class ClientsController extends Controller
 
     private function createClient(CreateClientRequest $request)
     {
-        $data                    = $request->all();
-
-        $client        = Client::create($data);
-        $client->tvrtle_id = Hashids::connection('client_id')->encode($client->id);
+        $data              = $request->all();
+        $client            = Client::create($data);
+        $client->client_id = Hashids::connection('client_id')->encode($client->id);
         $client->save();
 
         return $client;

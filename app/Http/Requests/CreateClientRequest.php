@@ -13,7 +13,7 @@ class CreateClientRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class CreateClientRequest extends Request
     public function rules()
     {
         return [
-            //
+            'client_name' => 'required|min:3',
+            'client_address' => 'required|min:3'
         ];
     }
 }

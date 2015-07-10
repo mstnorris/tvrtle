@@ -2,6 +2,7 @@
 
 namespace Tvrtle;
 
+use Carbon\Carbon;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -32,6 +33,53 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    protected $dates = [
+        'verified_on',
+        'active_on',
+        'blocked_on'
+    ];
+
+    /*
+     * Middleware Checks
+     */
+
+    public function isVerified()
+    {
+        if ($this->verified_on && $this->verified_on <= Carbon::now()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function isActive()
+    {
+        //dd(Carbon::now());
+        if ($this->active_on && $this->active_on <= Carbon::now()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function isBlocked()
+    {
+        if ( $this->blocked_on && Carbon::now() >= $this->blocked_on ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function isOfficeBased()
+    {
+        return $this->isA('Office Manager');
+    }
+
+    /*
+     * Model Relationships
+     */
 
     public function profile()
     {

@@ -9,45 +9,32 @@
     <div id="client">
 
         <div class="row">
-            <div class="col-sm-8 col-sm-offset-2">
+            <div class="col-sm-6 col-sm-offset-3">
                 <h1>Clients</h1>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-8 col-sm-offset-2">
+            <div class="col-sm-6 col-sm-offset-3">
 
-                <form method="POST" v-on="submit: onSubmitForm">
-
-                    <div class="form-group">
-                        <label for="client_name">
-                            Client Name:
-                            <span class="error" v-if="! newClient.client_name">*</span>
-                        </label>
-                        <input type="text" name="client_name" id="client_name" class="form-control"
-                               v-model="newClient.client_name">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="client_address">
-                            Client Address:
-                            <span class="error" v-if="! newClient.client_address">*</span>
-                        </label>
-                        <input type="text" name="client_address" id="client_address" class="form-control"
-                               v-model="newClient.client_address">
-                    </div>
-
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-default" v-attr="disabled: errors">Add Client</button>
-                    </div>
-
-                    <div class="alert alert-success animated fadeIn" v-if="submitted">Thanks!</div>
-
-                </form>
+                @include('clients.partials._form')
 
                 <hr/>
 
-                <article v-repeat="clients">
-                    <h3>@{{ client_id }} - @{{ client_name }} <small>@{{ client_address }}</small></h3>
+                <div class="form-group">
+                    <label for="client_filter">
+                    Filter Clients Name:
+                    </label>
+                    <input type="text" name="client_filter" id="client_filter" v-model="client_filter" class="form-control">
+                </div>
+
+                <hr>
+
+                <article v-repeat="clients | filterBy client_filter">
+                <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h3>@{{ client_id }} - @{{ client_name }} <small>@{{ client_address }}</small></h3>
+                        </div>
+                </div>
                 </article>
 
                 {{--<pre>@{{ $data | json }}</pre>--}}

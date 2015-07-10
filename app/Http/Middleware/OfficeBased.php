@@ -1,4 +1,4 @@
-<?php namespace Hawksmoor\Http\Middleware;
+<?php namespace Tvrtle\Http\Middleware;
 
 use Closure;
 use Auth;

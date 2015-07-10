@@ -1,5 +1,8 @@
+
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -38,5 +41,7 @@
             </ul>
             @endif
         </div><!-- /.navbar-collapse -->
+            </div>
+        </div>
     </div><!-- /.container-fluid -->
 </nav>

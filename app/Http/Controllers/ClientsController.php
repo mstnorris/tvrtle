@@ -23,19 +23,4 @@ class ClientsController extends Controller
 
         return view('clients.index');
     }
-
-    public function show($id)
-    {
-        return $this->repository->show($id);
-    }
-
-    public function store(Request $request)
-    {
-        $data = $request->all();
-
-        $data['name'] = auth()->user()->name;
-        $data['email'] = auth()->user()->email;
-
-        Client::create($data);
-    }
 }

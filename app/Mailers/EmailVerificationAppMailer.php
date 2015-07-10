@@ -1,4 +1,4 @@
-<?php namespace Hawksmoor\Mailers;
+<?php namespace Tvrtle\Mailers;
 
 use Illuminate\Mail\Mailer;
 
@@ -27,10 +27,10 @@ class EmailVerificationAppMailer
         //dd($data['user'] = auth()->user()->toArray());
 
         $this->mailer->send($view, $data, function ($message) use ($toEmail, $toName, $subject) {
-            $message->from('office@hawksmoorcs.co.uk', 'Hawksmoor')
-                ->sender('office@hawksmoorcs.co.uk', 'Hawksmoor')
+            $message->from('mike@tvrtle.com', 'Tvrtle')
+                ->sender('mike@tvrtle.com', 'Tvrtle')
                 ->to($toEmail, $toName)
-                ->replyTo('office@hawksmoorcs.co.uk', 'Hawksmoor')
+                ->replyTo('mike@tvrtle.com', 'Tvrtle')
                 ->subject($subject);
         });
     }

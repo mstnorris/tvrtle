@@ -29,5 +29,9 @@ class Kernel extends HttpKernel
         'auth' => \Tvrtle\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \Tvrtle\Http\Middleware\RedirectIfAuthenticated::class,
+        'active' => \Tvrtle\Http\Middleware\Active::class,
+        'notBlocked' => \Tvrtle\Http\Middleware\NotBlocked::class,
+        'verified' => \Tvrtle\Http\Middleware\Verified::class,
+        'officeBased' => \Tvrtle\Http\Middleware\OfficeBase::class
     ];
 }

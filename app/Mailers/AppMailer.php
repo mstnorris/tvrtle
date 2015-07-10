@@ -1,6 +1,6 @@
-<?php namespace Hawksmoor\Mailers;
+<?php namespace Tvrtle\Mailers;
 
-use Hawksmoor\Message;
+use Tvrtle\Message;
 use Illuminate\Mail\Mailer;
 use Vinkla\Hashids\Facades\Hashids;
 
@@ -9,7 +9,7 @@ class AppMailer
 
     protected $mailer;
 
-    protected $from = 'info@hawksmoorcs.co.uk';
+    protected $from = 'mike@tvrtle.com';
 
     protected $toEmail;
 
