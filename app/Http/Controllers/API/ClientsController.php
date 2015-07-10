@@ -6,6 +6,7 @@ use Tvrtle\Client;
 use Tvrtle\Http\Controllers\Controller;
 use Tvrtle\Http\Requests\CreateClientRequest;
 use Tvrtle\Repositories\ClientRepository;
+use Vinkla\Hashids\Facades\Hashids;
 
 class ClientsController extends Controller
 {

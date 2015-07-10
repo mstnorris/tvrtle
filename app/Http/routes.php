@@ -20,6 +20,9 @@ get('email-view-test', function() {
     $user = \Tvrtle\User::find(1);
     return view('emails.verify_email', compact('user'));
 });
+get('email-verified-test', function() {
+   return view('emails.verified_email');
+});
 /*
 |--------------------------------------------------------------------------
 | Internal Employee Application Routes (Requires Authentication)

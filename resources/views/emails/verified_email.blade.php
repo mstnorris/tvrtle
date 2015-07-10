@@ -4,7 +4,6 @@
     <meta name="viewport" content="width=device-width"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Email Address Verified</title>
-
     <style type="text/css">
         @import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400);
 
@@ -360,6 +359,5 @@
         <td></td>
     </tr>
 </table>
-
 </body>
 </html>

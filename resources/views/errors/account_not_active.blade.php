@@ -12,13 +12,13 @@
 
     <meta name="author" content="">
 
-    <title>Hawksmoor</title>
+    <title>Tvrtle</title>
 
     <link rel="stylesheet" href="{{ elixir('css/all.css') }}">
 
     <style>
         body {
-            /*font-family: "HelveticaNeueLight", "HelveticaNeue-Light", "Helvetica Neue Light", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;*/
+
             color: #2980b9;
             font-weight: 200;
             width: 100%;
@@ -43,9 +43,9 @@
         }
 
         p.status-icon {
-            animation-duration: 2s;
+            animation-duration: 5s;
             animation-delay: 0s;
-            -webkit-animation-duration: 2s;
+            -webkit-animation-duration: 5s;
             -webkit-animation-delay: 0s;
         }
 
@@ -69,6 +69,11 @@
             font-size: 16px;
         }
 
+
+        .container {
+            max-width: 480px;
+        }
+
         @media(min-width:768px) {
             .status-icon {
                 font-size: 144px;
@@ -79,6 +84,10 @@
             }
             .status-message {
                 font-size: 24px;
+            }
+
+            .container {
+                max-width: 640px;
             }
         }
 
@@ -96,6 +105,10 @@
                 font-size: 32px;
             }
 
+            .container {
+                max-width: 768px;
+            }
+
         }
     </style>
 
@@ -109,26 +122,13 @@
 
         <div class="container">
 
-            {{--@if ( $statusIcon )--}}
-                {{--<p class="status-icon animated infinite pulse"><i class='fa fa-{{ $statusIcon }}'></i></p>--}}
-            {{--@endif--}}
-
-            {{--@if ( $statusHeading )--}}
-                {{--<p class="status-heading animated fadeIn">{!! $statusHeading !!}</p>--}}
-            {{--@endif--}}
-
-            {{--@if ( $statusMessage )--}}
-                {{--<p class="status-message animated fadeIn">{!! $statusMessage !!}</p>--}}
-            {{--@endif--}}
-
             <p class="status-icon animated infinite pulse"><i class='fa fa-lock'></i></p>
 
             <p class="status-heading animated fadeIn">Account Not Active</p>
 
-            <p class="status-message animated fadeIn">
-                Please call the office on +44 (0) 1206 323 333<br />
-                and we'll look into this for you. Please have<br />
-                your email address: {{ $email }} to hand.
+            <p class="status-message animated fadeIn text-justify">
+                Please have send an email to <a href="mailto:mike@tvrtle.com">mike@tvrtle.com</a>
+                from your address {{ $email }} so that we can sort it out.
             </p>
 
         </div>

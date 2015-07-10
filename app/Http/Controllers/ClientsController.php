@@ -1,7 +1,6 @@
 <?php namespace Tvrtle\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Tvrtle\Client;
+
 use Tvrtle\Repositories\ClientRepository;
 
 class ClientsController extends Controller
@@ -19,8 +18,6 @@ class ClientsController extends Controller
 
     public function index()
     {
-        //$Clients = $this->repository->getAll();
-
         return view('clients.index');
     }
 }

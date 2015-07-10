@@ -43,3 +43,7 @@ body > .container-fluid {
 code {
     font-size: 80%;
 }
+
+[data-notify="container"] {
+    animation-iteration-count: 1 !important;
+}

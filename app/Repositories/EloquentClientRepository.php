@@ -7,7 +7,7 @@ class EloquentClientRepository implements ClientRepository
 {
     public function getAll()
     {
-        return Client::all();
+        return Client::orderBy('created_at', 'desc')->get();
     }
 
     public function show($id)

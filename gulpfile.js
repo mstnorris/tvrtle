@@ -4,6 +4,7 @@ elixir(function(mix) {
     mix.scripts([
         'vendor/jquery.js',
         'vendor/bootstrap.js',
+        'vendor/bootstrap-notify.js',
         'vendor/lettering.js',
         'vendor/socket.io.js',
         'vendor/textillate.js',

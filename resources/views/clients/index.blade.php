@@ -8,42 +8,45 @@
 
     <div id="client">
 
-        <div class="row">
-            <div class="col-sm-6 col-sm-offset-3">
-                <h1>Clients</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6 col-sm-offset-3">
 
-                @include('clients.partials._form')
+        <h1>Clients</h1>
 
-                <hr/>
 
-                <div class="form-group">
-                    <label for="client_filter">
-                    Filter Clients Name:
-                    </label>
-                    <input type="text" name="client_filter" id="client_filter" v-model="client_filter" class="form-control">
-                </div>
+        @include('clients.partials._form')
 
-                <hr>
+        <hr/>
 
-                <article v-repeat="clients | filterBy client_filter">
-                <div class="panel panel-default">
-                        <div class="panel-body">
-                            <h3>@{{ client_id }} - @{{ client_name }} <small>@{{ client_address }}</small></h3>
-                        </div>
-                </div>
-                </article>
-
-                {{--<pre>@{{ $data | json }}</pre>--}}
-            </div>
+        <div class="form-group">
+            <label for="client_filter">
+                Filter Clients Name:
+            </label>
+            <input type="text" name="client_filter" id="client_filter" v-model="client_filter" class="form-control">
         </div>
 
+        <hr>
 
+        <article v-if="newClient">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>####### - @{{ newClient.client_name }}
+                        <small>@{{ newClient.client_address }}</small>
+                    </h3>
+                </div>
+            </div>
+        </article>
+
+        <article v-repeat="clients | filterBy client_filter">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>@{{ client_id }} - @{{ client_name }}
+                        <small>@{{ client_address }}</small>
+                    </h3>
+                </div>
+            </div>
+        </article>
+
+        {{--<pre>@{{ $data | json }}</pre>--}}
     </div>
-
 
 @endsection
 
@@ -100,7 +103,7 @@
 
                     this.clients.push(client);
 
-                    this.newClient = { client_name: '', client_address: '' };
+                    this.newClient = {client_name: '', client_address: ''};
 
                     this.submitted = true;
 
