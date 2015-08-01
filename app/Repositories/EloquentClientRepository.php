@@ -7,7 +7,7 @@ class EloquentClientRepository implements ClientRepository
 {
     public function getAll()
     {
-        return Client::orderBy('created_at', 'desc')->get();
+        return Client::with('users')->get();
     }
 
     public function show($id)
@@ -18,9 +18,6 @@ class EloquentClientRepository implements ClientRepository
     public function store(Request $request)
     {
         $data = $request->all();
-
-        //$data['name'] = auth()->user()->name;
-        //$data['email'] = auth()->user()->email;
 
         Client::create($data);
 

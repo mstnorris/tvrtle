@@ -2,6 +2,9 @@
 
 @section('header')
     <meta id="token" name="token" value="{{ csrf_token() }}">
+    <style>
+
+    </style>
 @endsection
 
 @section('content')
@@ -14,7 +17,7 @@
 
         @include('clients.partials._form')
 
-        <hr/>
+        <hr />
 
         <div class="form-group">
             <label for="client_filter">
@@ -23,24 +26,30 @@
             <input type="text" name="client_filter" id="client_filter" v-model="client_filter" class="form-control">
         </div>
 
-        <hr>
+        <hr />
 
-        <article v-if="newClient">
-            <div class="panel panel-default">
+        <article v-show="newClient.client_name || newClient.client_address">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    #######
+                </div>
                 <div class="panel-body">
-                    <h3>####### - @{{ newClient.client_name }}
+                    <p>@{{ newClient.client_name }}
                         <small>@{{ newClient.client_address }}</small>
-                    </h3>
+                    </p>
                 </div>
             </div>
         </article>
 
         <article v-repeat="clients | filterBy client_filter">
             <div class="panel panel-default">
+                <div class="panel-heading">
+                    <samp><a href="/clients/@{{ client_id }}">@{{ client_id }}</a></samp>
+                </div>
                 <div class="panel-body">
-                    <h3>@{{ client_id }} - @{{ client_name }}
-                        <small>@{{ client_address }}</small>
-                    </h3>
+                        <p>@{{ client_name }}
+                            <small>@{{ client_address }}</small>
+                        </p>
                 </div>
             </div>
         </article>
