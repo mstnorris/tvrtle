@@ -3,6 +3,8 @@
 namespace Tvrtle\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Vinkla\Hashids\Facades\Hashids;
+use Tvrtle\Client;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Client::created(function ($client) {
+            $client->client_id = Hashids::connection('client_id')->encode($client->id);
+            $client->save();
+        });
     }
 
     /**

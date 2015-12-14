@@ -294,6 +294,7 @@ class ConstantsTableSeeder extends Seeder
 
         Client::insert($clients);
 
+        $clientIds = Client::lists('client_id')->all();
 
         JobCategory::create(['name' => 'Graphic Design']);
         JobCategory::create(['name' => 'Web Design']);
@@ -302,20 +303,38 @@ class ConstantsTableSeeder extends Seeder
         JobCategory::create(['name' => 'Services']);
 
         /*
+         * Invoices
+         */
+        unset($invoiceIds);
+        $invoiceIds = [];
+
+        for ( $i=1; $i<=19; $i++) {
+            $invoiceIds[] = [
+                'invoice_id' => Hashids::connection('invoice_id')->encode($i),
+                'client_id' => $faker->randomElement($clientIds),
+            ];
+        }
+
+        Invoice::insert($invoiceIds);
+
+        $invoiceIds = Invoice::lists('invoice_id')->all();
+
+        /*
          * Jobs
          */
         unset($jobs);
         $jobs = [];
 
-        $clientIds = Client::lists('id')->all();
+
         $jobCategoryIds = JobCategory::lists('id')->all();
 
-        for ( $i=1; $i<=50; $i++) {
+        for ( $i=1; $i<20; $i++) {
             $jobs[] = [
                 'job_id' => Hashids::connection('job_id')->encode($i),
-                'job_client_id' => $faker->randomElement($clientIds),
-                'job_category_id' => $faker->randomElement($jobCategoryIds),
-                'job_name' => $faker->word
+                'invoice_id' => $faker->randomElement($invoiceIds),
+                'description' => $faker->sentence,
+                'rate' => $faker->randomDigitNotNull,
+                'quantity' => $faker->randomDigitNotNull
             ];
         }
 
@@ -324,34 +343,122 @@ class ConstantsTableSeeder extends Seeder
 
 
 
-        /*
-         * Invoices
-         */
-        unset($invoiceIds);
-        $invoiceIds = [];
-
-        for ( $i=1; $i<=50; $i++) {
-            $invoiceIds[] = [
-                'invoice_id' => Hashids::connection('invoice_id')->encode($i)
-            ];
-        }
-
-        Invoice::insert($invoiceIds);
-
-
-
-
-
-
 
         // Hashids::connection('invoice_id')->encode($invoice->id);
 
-        $client = Client::create([
+        $clientHawksmoor = Client::create([
+            //'client_id' => Hashids::connection('client_id')->encode(20),
             'client_name' => 'Hawksmoor',
             'client_address' => 'Colchester'
         ]);
-        $client->client_id = Hashids::connection('client_id')->encode($client->id);
-        $client->save();
+
+        $clientSametErpik = $client = Client::create([
+            //'client_id' => Hashids::connection('client_id')->encode(21),
+            'client_name' => 'Samet Erpik',
+            'client_address' => 'Hove'
+        ]);
+
+        $clientAdamPatel = $client = Client::create([
+            //'client_id' => Hashids::connection('client_id')->encode(22),
+            'client_name' => 'Adam Patel',
+            'client_address' => 'Brighton'
+        ]);
+
+        $hcs1 = Invoice::create([
+            'invoice_id' => Hashids::connection('invoice_id')->encode(20),
+            'client_id' => $clientHawksmoor->client_id
+        ]);
+
+        Job::create([
+            'job_id' => Hashids::connection('job_id')->encode(20),
+            'invoice_id' => $hcs1->invoice_id,
+            'description' => 'Corporate rebranding',
+            'rate' => 200000,
+            'quantity' => 1
+        ]);
+
+        Job::create([
+            'job_id' => Hashids::connection('job_id')->encode(21),
+            'invoice_id' => $hcs1->invoice_id,
+            'description' => 'Website consultation and initial work',
+            'rate' => 300000,
+            'quantity' => 1
+        ]);
+
+        $sam1 = Invoice::create([
+            'invoice_id' => Hashids::connection('invoice_id')->encode(21),
+            'client_id' => $clientSametErpik->client_id
+        ]);
+
+        Job::create([
+            'job_id' => Hashids::connection('job_id')->encode(22),
+            'invoice_id' => $sam1->invoice_id,
+            'description' => 'Return flight to Amsterdam',
+            'rate' => 7200,
+            'quantity' => 1
+        ]);
+
+        Job::create([
+            'job_id' => Hashids::connection('job_id')->encode(23),
+            'invoice_id' => $sam1->invoice_id,
+            'description' => 'Apartment',
+            'rate' => 9000,
+            'quantity' => 1
+        ]);
+
+        Job::create([
+            'job_id' => Hashids::connection('job_id')->encode(24),
+            'invoice_id' => $sam1->invoice_id,
+            'description' => 'Parking',
+            'rate' => 1300,
+            'quantity' => 1
+        ]);
+
+        $hcs2 = Invoice::create([
+            'invoice_id' => Hashids::connection('invoice_id')->encode(22),
+            'client_id' => $clientHawksmoor->client_id
+        ]);
+
+        Job::create([
+            'job_id' => Hashids::connection('job_id')->encode(25),
+            'invoice_id' => $hcs2->invoice_id,
+            'description' => 'Vehicle signage design',
+            'rate' => 250000,
+            'quantity' => 1
+        ]);
+
+        Job::create([
+            'job_id' => Hashids::connection('job_id')->encode(26),
+            'invoice_id' => $hcs2->invoice_id,
+            'description' => 'Google apps',
+            'rate' => 600,
+            'quantity' => 40
+        ]);
+
+        Job::create([
+            'job_id' => Hashids::connection('job_id')->encode(27),
+            'invoice_id' => $hcs2->invoice_id,
+            'description' => 'Technical Support',
+            'rate' => 2000,
+            'quantity' => 75
+        ]);
+
+        Job::create([
+            'job_id' => Hashids::connection('job_id')->encode(28),
+            'invoice_id' => $hcs2->invoice_id,
+            'description' => 'Website development',
+            'rate' => 2000,
+            'quantity' => 20
+        ]);
+
+        Job::create([
+            'job_id' => Hashids::connection('job_id')->encode(29),
+            'invoice_id' => $hcs2->invoice_id,
+            'description' => 'Website domain and hosting',
+            'rate' => 20000,
+            'quantity' => 1
+        ]);
+
 
 
     }

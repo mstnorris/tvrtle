@@ -15,11 +15,11 @@ class CreateJobsTable extends Migration
         Schema::create('jobs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('job_id', 9)->unique();
-            $table->integer('job_client_id')->unsigned()->index()->nullable();
-            $table->foreign('job_client_id')->references('id')->on('clients')->onDelete('set null');
-            $table->integer('job_category_id')->unsigned()->index()->nullable();
-            $table->foreign('job_category_id')->references('id')->on('job_categories')->onDelete('set null');
-            $table->string('job_name');
+            $table->string('invoice_id', 8)->index();
+            $table->foreign('invoice_id')->references('invoice_id')->on('invoices');
+            $table->text('description');
+            $table->integer('rate')->unsigned();
+            $table->integer('quantity')->unsigned();
             $table->timestamps();
         });
     }
