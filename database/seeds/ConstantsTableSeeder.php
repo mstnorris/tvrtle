@@ -347,19 +347,19 @@ class ConstantsTableSeeder extends Seeder
         // Hashids::connection('invoice_id')->encode($invoice->id);
 
         $clientHawksmoor = Client::create([
-            //'client_id' => Hashids::connection('client_id')->encode(20),
+            'client_id' => Hashids::connection('client_id')->encode(20),
             'client_name' => 'Hawksmoor',
             'client_address' => 'Colchester'
         ]);
 
-        $clientSametErpik = $client = Client::create([
-            //'client_id' => Hashids::connection('client_id')->encode(21),
+        $clientSametErpik = Client::create([
+            'client_id' => Hashids::connection('client_id')->encode(21),
             'client_name' => 'Samet Erpik',
             'client_address' => 'Hove'
         ]);
 
-        $clientAdamPatel = $client = Client::create([
-            //'client_id' => Hashids::connection('client_id')->encode(22),
+        $clientAdamPatel = Client::create([
+            'client_id' => Hashids::connection('client_id')->encode(22),
             'client_name' => 'Adam Patel',
             'client_address' => 'Brighton'
         ]);
@@ -459,6 +459,228 @@ class ConstantsTableSeeder extends Seeder
             'quantity' => 1
         ]);
 
+        // Hawksmoor Invoice 7 Jan 2016
+
+        $hcs3 = Invoice::create([
+            'invoice_id' => Hashids::connection('invoice_id')->encode(23),
+            'client_id' => $clientHawksmoor->client_id
+        ]);
+
+        Job::create([
+            'job_id' => Hashids::connection('job_id')->encode(30),
+            'invoice_id' => $hcs3->invoice_id,
+            'description' => 'Technical Support',
+            'rate' => 2000,
+            'quantity' => 5
+        ]);
+
+        Job::create([
+            'job_id' => Hashids::connection('job_id')->encode(31),
+            'invoice_id' => $hcs3->invoice_id,
+            'description' => 'Google apps',
+            'rate' => 600,
+            'quantity' => 90
+        ]);
+
+        // Hawksmoor Invoice 22 Jan 2016
+
+        $hcs4 = Invoice::create([
+            'invoice_id' => Hashids::connection('invoice_id')->encode(24),
+            'client_id' => $clientHawksmoor->client_id
+        ]);
+
+        Job::create([
+            'job_id' => Hashids::connection('job_id')->encode(32),
+            'invoice_id' => $hcs4->invoice_id,
+            'description' => 'Stationery',
+            'rate' => 3500,
+            'quantity' => 4
+        ]);
+
+        Job::create([
+            'job_id' => Hashids::connection('job_id')->encode(33),
+            'invoice_id' => $hcs4->invoice_id,
+            'description' => 'Email Accounts',
+            'rate' => 2500,
+            'quantity' => 7
+        ]);
+
+        Job::create([
+            'job_id' => Hashids::connection('job_id')->encode(34),
+            'invoice_id' => $hcs4->invoice_id,
+            'description' => 'Tech Support',
+            'rate' => 2500,
+            'quantity' => 1
+        ]);
+
+        Job::create([
+            'job_id' => Hashids::connection('job_id')->encode(35),
+            'invoice_id' => $hcs4->invoice_id,
+            'description' => 'Business Cards',
+            'rate' => 2500,
+            'quantity' => 6
+        ]);
+
+        Job::create([
+            'job_id' => Hashids::connection('job_id')->encode(36),
+            'invoice_id' => $hcs4->invoice_id,
+            'description' => 'Vehicle Signage Design',
+            'rate' => 3500,
+            'quantity' => 3
+        ]);
+
+        Job::create([
+            'job_id' => Hashids::connection('job_id')->encode(37),
+            'invoice_id' => $hcs4->invoice_id,
+            'description' => 'Training',
+            'rate' => 3500,
+            'quantity' => 4
+        ]);
+
+        // Hawksmoor Invoice 12 Feb 2016
+        $hcs5 = Invoice::create([
+            'invoice_id' => Hashids::connection('invoice_id')->encode(25),
+            'client_id' => $clientHawksmoor->client_id
+        ]);
+
+        //Google Apps 108
+        //Trackers (friday) 9 x 25
+        //Tech support (sat) 10 x 15
+        //Tuesday (design) 6 x 25
+        //Wednesday
+        //
+        //Friday and Saturday policies 9 x 25
+        //Monday morning (today) trackers  signage 2 x 25
+        //Wednesday 10th 6hrs 5 x 25
+        //Thursday 11th 4hrs 3 x 25
+        Job::create([
+            'job_id' => Hashids::connection('job_id')->encode(38),
+            'invoice_id' => $hcs5->invoice_id,
+            'description' => 'Google Apps',
+            'rate' => 600,
+            'quantity' => 18
+        ]);
+
+        Job::create([
+            'job_id' => Hashids::connection('job_id')->encode(39),
+            'invoice_id' => $hcs5->invoice_id,
+            'description' => 'Website Design & Development',
+            'rate' => 2500,
+            'quantity' => 34
+        ]);
+
+        Job::create([
+            'job_id' => Hashids::connection('job_id')->encode(40),
+            'invoice_id' => $hcs5->invoice_id,
+            'description' => 'Admin & Tech Support',
+            'rate' => 1500,
+            'quantity' => 10
+        ]);
+
+        // Hawksmoor Invoice 25 Feb 2016
+        $hcs6 = Invoice::create([
+            'invoice_id' => Hashids::connection('invoice_id')->encode(26),
+            'client_id' => $clientHawksmoor->client_id
+        ]);
+
+        //Previous 2 x £25 added to Wednesday and Thursday
+        //Tuesday (back from Yorkshire) 7 x £15
+        //Wednesday (all day) 13 x £25
+        //Thursday (all day) 13 x £25
+        //Friday (morning) 4 x £15
+        //Sunday 21st 11:00-22:00 11 x £25
+        //Wed 24th 09:00-13:00 4 x £15
+        //Wed 24th 13:00-23:00 8 x £25
+        //Thu 25 09:00-18:00 9 x £25
+        Job::create([
+            'job_id' => Hashids::connection('job_id')->encode(41),
+            'invoice_id' => $hcs6->invoice_id,
+            'description' => 'Admin & Tech Support',
+            'rate' => 1500,
+            'quantity' => 15
+        ]);
+
+        Job::create([
+            'job_id' => Hashids::connection('job_id')->encode(42),
+            'invoice_id' => $hcs6->invoice_id,
+            'description' => 'Website Design & Development',
+            'rate' => 2500,
+            'quantity' => 54
+        ]);
+
+        // Hawksmoor Invoice 2 Mar 2016
+        $hcs7 = Invoice::create([
+            'invoice_id' => Hashids::connection('invoice_id')->encode(27),
+            'client_id' => $clientHawksmoor->client_id
+        ]);
+
+        //// Fri 26th 08:30-00:00
+        //15.5 x £25
+        //
+        //// Saturday 27th 07:30 - 10:00
+        //3 x £15
+        //
+        //// Sunday
+        //7 x £25
+        //
+        //// Monday 29th Feb
+        //0
+        //
+        //// Tuesday 1st Mar
+        //1 x £15
+        //
+        //// Phone calls
+        //£50
+        //
+        //// Google Apps
+        //£108
+        //
+        //// Wednesday 2nd Mar
+        //11 x £25
+        //
+        //// Thursday 3rd Mar
+        //0
+        //
+        //// Fri 4th Mar
+        //0
+        //
+        //// Saturday 5th Mar
+        //0
+        //
+        //// Sunday 6th Mar
+        //3 x £25
+
+        Job::create([
+            'job_id' => Hashids::connection('job_id')->encode(43),
+            'invoice_id' => $hcs7->invoice_id,
+            'description' => 'Google Apps',
+            'rate' => 600,
+            'quantity' => 18
+        ]);
+
+        Job::create([
+            'job_id' => Hashids::connection('job_id')->encode(44),
+            'invoice_id' => $hcs7->invoice_id,
+            'description' => 'Website Design & Development',
+            'rate' => 2500,
+            'quantity' => 33.5
+        ]);
+
+        Job::create([
+            'job_id' => Hashids::connection('job_id')->encode(45),
+            'invoice_id' => $hcs7->invoice_id,
+            'description' => 'Admin & Tech Support',
+            'rate' => 1500,
+            'quantity' => 4
+        ]);
+
+        Job::create([
+            'job_id' => Hashids::connection('job_id')->encode(46),
+            'invoice_id' => $hcs7->invoice_id,
+            'description' => 'Phone Calls',
+            'rate' => 4995,
+            'quantity' => 1
+        ]);
 
 
     }

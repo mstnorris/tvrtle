@@ -20,21 +20,14 @@
 <body>
 
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-            @include('layouts.partials.navigation')
+    @include('layouts.partials.navigation')
 
-            @yield('content')
-
-
-
-        </div>
-    </div>
+    @yield('content')
 </div>
 <footer class="footer">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+            <div class="col-sm-8 col-sm-offset-2">
                 <p class="text-muted">Copyright &copy; {{ date('Y') }} Tvrtle. All rights reserved.</p>
             </div>
         </div>

@@ -19,7 +19,7 @@ class CreateJobsTable extends Migration
             $table->foreign('invoice_id')->references('invoice_id')->on('invoices');
             $table->text('description');
             $table->integer('rate')->unsigned();
-            $table->integer('quantity')->unsigned();
+            $table->decimal('quantity', 6, 2);
             $table->timestamps();
         });
     }
