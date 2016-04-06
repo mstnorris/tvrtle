@@ -663,7 +663,7 @@ class ConstantsTableSeeder extends Seeder
             'invoice_id' => $hcs7->invoice_id,
             'description' => 'Website Design & Development',
             'rate' => 2500,
-            'quantity' => 33.5
+            'quantity' => 39.5
         ]);
 
         Job::create([
@@ -671,7 +671,7 @@ class ConstantsTableSeeder extends Seeder
             'invoice_id' => $hcs7->invoice_id,
             'description' => 'Admin & Tech Support',
             'rate' => 1500,
-            'quantity' => 4
+            'quantity' => 11
         ]);
 
         Job::create([
@@ -680,6 +680,52 @@ class ConstantsTableSeeder extends Seeder
             'description' => 'Phone Calls',
             'rate' => 4995,
             'quantity' => 1
+        ]);
+
+
+        // Hawksmoor Invoice 1 Apr 2016
+        $hcs8 = Invoice::create([
+            'invoice_id' => Hashids::connection('invoice_id')->encode(28),
+            'client_id' => $clientHawksmoor->client_id
+        ]);
+
+        Job::create([
+            'job_id' => Hashids::connection('job_id')->encode(47),
+            'invoice_id' => $hcs8->invoice_id,
+            'description' => 'Website Design & Development',
+            'rate' => 2500,
+            'quantity' => 22
+        ]);
+
+        Job::create([
+            'job_id' => Hashids::connection('job_id')->encode(48),
+            'invoice_id' => $hcs8->invoice_id,
+            'description' => 'Admin & Tech Support',
+            'rate' => 1500,
+            'quantity' => 1
+        ]);
+
+        // Hawksmoor Invoice TBC (hcs_timesheet_5.soulver)
+        $hcs9 = Invoice::create([
+            'invoice_id' => Hashids::connection('invoice_id')->encode(29),
+            'client_id' => $clientHawksmoor->client_id
+        ]);
+
+        // Up until 6 Apr so far
+        Job::create([
+            'job_id' => Hashids::connection('job_id')->encode(49),
+            'invoice_id' => $hcs9->invoice_id,
+            'description' => 'Website Design & Development',
+            'rate' => 2500,
+            'quantity' => 43
+        ]);
+
+        Job::create([
+            'job_id' => Hashids::connection('job_id')->encode(50),
+            'invoice_id' => $hcs9->invoice_id,
+            'description' => 'Google Apps',
+            'rate' => 600,
+            'quantity' => 18
         ]);
 
 
