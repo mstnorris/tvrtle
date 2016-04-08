@@ -705,24 +705,38 @@ class ConstantsTableSeeder extends Seeder
             'quantity' => 1
         ]);
 
-        // Hawksmoor Invoice TBC (hcs_timesheet_5.soulver)
+        // Hawksmoor Invoice Thu 7 Apr iPhone 5s
         $hcs9 = Invoice::create([
             'invoice_id' => Hashids::connection('invoice_id')->encode(29),
             'client_id' => $clientHawksmoor->client_id
         ]);
 
-        // Up until 6 Apr so far
         Job::create([
             'job_id' => Hashids::connection('job_id')->encode(49),
             'invoice_id' => $hcs9->invoice_id,
+            'description' => 'iPhone 5s Out of Warranty Screen Replacement',
+            'rate' => 9900,
+            'quantity' => 1
+        ]);
+
+        // Hawksmoor Invoice TBC (hcs_timesheet_5.soulver)
+        $hcs10 = Invoice::create([
+            'invoice_id' => Hashids::connection('invoice_id')->encode(30),
+            'client_id' => $clientHawksmoor->client_id
+        ]);
+
+        // Up until 6 Apr so far
+        Job::create([
+            'job_id' => Hashids::connection('job_id')->encode(50),
+            'invoice_id' => $hcs10->invoice_id,
             'description' => 'Website Design & Development',
             'rate' => 2500,
             'quantity' => 43
         ]);
 
         Job::create([
-            'job_id' => Hashids::connection('job_id')->encode(50),
-            'invoice_id' => $hcs9->invoice_id,
+            'job_id' => Hashids::connection('job_id')->encode(51),
+            'invoice_id' => $hcs10->invoice_id,
             'description' => 'Google Apps',
             'rate' => 600,
             'quantity' => 18
