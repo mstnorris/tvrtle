@@ -719,19 +719,18 @@ class ConstantsTableSeeder extends Seeder
             'quantity' => 1
         ]);
 
-        // Hawksmoor Invoice TBC (hcs_timesheet_5.soulver)
+        // Hawksmoor Invoice NW93XN93 15 Apr 2016 (hcs_timesheet_5.soulver)
         $hcs10 = Invoice::create([
             'invoice_id' => Hashids::connection('invoice_id')->encode(30),
             'client_id' => $clientHawksmoor->client_id
         ]);
 
-        // Up until 6 Apr so far
         Job::create([
             'job_id' => Hashids::connection('job_id')->encode(50),
             'invoice_id' => $hcs10->invoice_id,
             'description' => 'Website Design & Development',
             'rate' => 2500,
-            'quantity' => 43
+            'quantity' => 100
         ]);
 
         Job::create([
@@ -742,6 +741,43 @@ class ConstantsTableSeeder extends Seeder
             'quantity' => 18
         ]);
 
+        Job::create([
+            'job_id' => Hashids::connection('job_id')->encode(52),
+            'invoice_id' => $hcs10->invoice_id,
+            'description' => 'Admin & Tech Support',
+            'rate' => 1500,
+            'quantity' => 2
+        ]);
+
+        // Hawksmoor Invoice NW93XN93 TBC (hcs_timesheet_6.soulver)
+        $hcs11 = Invoice::create([
+            'invoice_id' => Hashids::connection('invoice_id')->encode(31),
+            'client_id' => $clientHawksmoor->client_id
+        ]);
+
+        Job::create([
+            'job_id' => Hashids::connection('job_id')->encode(53),
+            'invoice_id' => $hcs11->invoice_id,
+            'description' => 'Website Design & Development',
+            'rate' => 2500,
+            'quantity' => 107
+        ]);
+
+//        Job::create([
+//            'job_id' => Hashids::connection('job_id')->encode(54),
+//            'invoice_id' => $hcs11->invoice_id,
+//            'description' => 'Admin & Tech Support',
+//            'rate' => 1500,
+//            'quantity' => 2
+//        ]);
+
+//        Job::create([
+//            'job_id' => Hashids::connection('job_id')->encode(55),
+//            'invoice_id' => $hcs11->invoice_id,
+//            'description' => 'Google Apps',
+//            'rate' => 600,
+//            'quantity' => 18
+//        ]);
 
     }
 }
